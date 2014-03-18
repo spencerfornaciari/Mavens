@@ -1,0 +1,486 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		89C891F618D907C7009E3E6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C891F518D907C7009E3E6B /* Foundation.framework */; };
+		89C891F818D907C7009E3E6B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C891F718D907C7009E3E6B /* CoreGraphics.framework */; };
+		89C891FA18D907C7009E3E6B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C891F918D907C7009E3E6B /* UIKit.framework */; };
+		89C8920018D907C7009E3E6B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89C891FE18D907C7009E3E6B /* InfoPlist.strings */; };
+		89C8920218D907C7009E3E6B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C8920118D907C7009E3E6B /* main.m */; };
+		89C8920618D907C7009E3E6B /* SFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C8920518D907C7009E3E6B /* SFAppDelegate.m */; };
+		89C8920918D907C7009E3E6B /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89C8920718D907C7009E3E6B /* Main_iPhone.storyboard */; };
+		89C8920C18D907C7009E3E6B /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89C8920A18D907C7009E3E6B /* Main_iPad.storyboard */; };
+		89C8920F18D907C7009E3E6B /* SFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C8920E18D907C7009E3E6B /* SFViewController.m */; };
+		89C8921118D907C7009E3E6B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89C8921018D907C7009E3E6B /* Images.xcassets */; };
+		89C8921818D907C7009E3E6B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C8921718D907C7009E3E6B /* XCTest.framework */; };
+		89C8921918D907C7009E3E6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C891F518D907C7009E3E6B /* Foundation.framework */; };
+		89C8921A18D907C7009E3E6B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C891F918D907C7009E3E6B /* UIKit.framework */; };
+		89C8922218D907C7009E3E6B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89C8922018D907C7009E3E6B /* InfoPlist.strings */; };
+		89C8922418D907C7009E3E6B /* MavensTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C8922318D907C7009E3E6B /* MavensTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		89C8921B18D907C7009E3E6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 89C891EA18D907C7009E3E6B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 89C891F118D907C7009E3E6B;
+			remoteInfo = Mavens;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		89C891F218D907C7009E3E6B /* Mavens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mavens.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		89C891F518D907C7009E3E6B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		89C891F718D907C7009E3E6B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		89C891F918D907C7009E3E6B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		89C891FD18D907C7009E3E6B /* Mavens-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Mavens-Info.plist"; sourceTree = "<group>"; };
+		89C891FF18D907C7009E3E6B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		89C8920118D907C7009E3E6B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		89C8920318D907C7009E3E6B /* Mavens-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mavens-Prefix.pch"; sourceTree = "<group>"; };
+		89C8920418D907C7009E3E6B /* SFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFAppDelegate.h; sourceTree = "<group>"; };
+		89C8920518D907C7009E3E6B /* SFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFAppDelegate.m; sourceTree = "<group>"; };
+		89C8920818D907C7009E3E6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		89C8920B18D907C7009E3E6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		89C8920D18D907C7009E3E6B /* SFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFViewController.h; sourceTree = "<group>"; };
+		89C8920E18D907C7009E3E6B /* SFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFViewController.m; sourceTree = "<group>"; };
+		89C8921018D907C7009E3E6B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		89C8921618D907C7009E3E6B /* MavensTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MavensTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		89C8921718D907C7009E3E6B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		89C8921F18D907C7009E3E6B /* MavensTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MavensTests-Info.plist"; sourceTree = "<group>"; };
+		89C8922118D907C7009E3E6B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		89C8922318D907C7009E3E6B /* MavensTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MavensTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		89C891EF18D907C7009E3E6B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89C891F818D907C7009E3E6B /* CoreGraphics.framework in Frameworks */,
+				89C891FA18D907C7009E3E6B /* UIKit.framework in Frameworks */,
+				89C891F618D907C7009E3E6B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89C8921318D907C7009E3E6B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89C8921818D907C7009E3E6B /* XCTest.framework in Frameworks */,
+				89C8921A18D907C7009E3E6B /* UIKit.framework in Frameworks */,
+				89C8921918D907C7009E3E6B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		89C891E918D907C7009E3E6B = {
+			isa = PBXGroup;
+			children = (
+				89C891FB18D907C7009E3E6B /* Mavens */,
+				89C8921D18D907C7009E3E6B /* MavensTests */,
+				89C891F418D907C7009E3E6B /* Frameworks */,
+				89C891F318D907C7009E3E6B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		89C891F318D907C7009E3E6B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				89C891F218D907C7009E3E6B /* Mavens.app */,
+				89C8921618D907C7009E3E6B /* MavensTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		89C891F418D907C7009E3E6B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				89C891F518D907C7009E3E6B /* Foundation.framework */,
+				89C891F718D907C7009E3E6B /* CoreGraphics.framework */,
+				89C891F918D907C7009E3E6B /* UIKit.framework */,
+				89C8921718D907C7009E3E6B /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		89C891FB18D907C7009E3E6B /* Mavens */ = {
+			isa = PBXGroup;
+			children = (
+				89C8920418D907C7009E3E6B /* SFAppDelegate.h */,
+				89C8920518D907C7009E3E6B /* SFAppDelegate.m */,
+				89C8920718D907C7009E3E6B /* Main_iPhone.storyboard */,
+				89C8920A18D907C7009E3E6B /* Main_iPad.storyboard */,
+				89C8920D18D907C7009E3E6B /* SFViewController.h */,
+				89C8920E18D907C7009E3E6B /* SFViewController.m */,
+				89C8921018D907C7009E3E6B /* Images.xcassets */,
+				89C891FC18D907C7009E3E6B /* Supporting Files */,
+			);
+			path = Mavens;
+			sourceTree = "<group>";
+		};
+		89C891FC18D907C7009E3E6B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				89C891FD18D907C7009E3E6B /* Mavens-Info.plist */,
+				89C891FE18D907C7009E3E6B /* InfoPlist.strings */,
+				89C8920118D907C7009E3E6B /* main.m */,
+				89C8920318D907C7009E3E6B /* Mavens-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		89C8921D18D907C7009E3E6B /* MavensTests */ = {
+			isa = PBXGroup;
+			children = (
+				89C8922318D907C7009E3E6B /* MavensTests.m */,
+				89C8921E18D907C7009E3E6B /* Supporting Files */,
+			);
+			path = MavensTests;
+			sourceTree = "<group>";
+		};
+		89C8921E18D907C7009E3E6B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				89C8921F18D907C7009E3E6B /* MavensTests-Info.plist */,
+				89C8922018D907C7009E3E6B /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		89C891F118D907C7009E3E6B /* Mavens */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89C8922718D907C7009E3E6B /* Build configuration list for PBXNativeTarget "Mavens" */;
+			buildPhases = (
+				89C891EE18D907C7009E3E6B /* Sources */,
+				89C891EF18D907C7009E3E6B /* Frameworks */,
+				89C891F018D907C7009E3E6B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Mavens;
+			productName = Mavens;
+			productReference = 89C891F218D907C7009E3E6B /* Mavens.app */;
+			productType = "com.apple.product-type.application";
+		};
+		89C8921518D907C7009E3E6B /* MavensTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89C8922A18D907C7009E3E6B /* Build configuration list for PBXNativeTarget "MavensTests" */;
+			buildPhases = (
+				89C8921218D907C7009E3E6B /* Sources */,
+				89C8921318D907C7009E3E6B /* Frameworks */,
+				89C8921418D907C7009E3E6B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				89C8921C18D907C7009E3E6B /* PBXTargetDependency */,
+			);
+			name = MavensTests;
+			productName = MavensTests;
+			productReference = 89C8921618D907C7009E3E6B /* MavensTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		89C891EA18D907C7009E3E6B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SF;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Spencer Fornaciari";
+				TargetAttributes = {
+					89C8921518D907C7009E3E6B = {
+						TestTargetID = 89C891F118D907C7009E3E6B;
+					};
+				};
+			};
+			buildConfigurationList = 89C891ED18D907C7009E3E6B /* Build configuration list for PBXProject "Mavens" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 89C891E918D907C7009E3E6B;
+			productRefGroup = 89C891F318D907C7009E3E6B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				89C891F118D907C7009E3E6B /* Mavens */,
+				89C8921518D907C7009E3E6B /* MavensTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		89C891F018D907C7009E3E6B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89C8920C18D907C7009E3E6B /* Main_iPad.storyboard in Resources */,
+				89C8921118D907C7009E3E6B /* Images.xcassets in Resources */,
+				89C8920918D907C7009E3E6B /* Main_iPhone.storyboard in Resources */,
+				89C8920018D907C7009E3E6B /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89C8921418D907C7009E3E6B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89C8922218D907C7009E3E6B /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		89C891EE18D907C7009E3E6B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89C8920218D907C7009E3E6B /* main.m in Sources */,
+				89C8920F18D907C7009E3E6B /* SFViewController.m in Sources */,
+				89C8920618D907C7009E3E6B /* SFAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89C8921218D907C7009E3E6B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89C8922418D907C7009E3E6B /* MavensTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		89C8921C18D907C7009E3E6B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 89C891F118D907C7009E3E6B /* Mavens */;
+			targetProxy = 89C8921B18D907C7009E3E6B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		89C891FE18D907C7009E3E6B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				89C891FF18D907C7009E3E6B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		89C8920718D907C7009E3E6B /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				89C8920818D907C7009E3E6B /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		89C8920A18D907C7009E3E6B /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				89C8920B18D907C7009E3E6B /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		89C8922018D907C7009E3E6B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				89C8922118D907C7009E3E6B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		89C8922518D907C7009E3E6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		89C8922618D907C7009E3E6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		89C8922818D907C7009E3E6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Mavens/Mavens-Prefix.pch";
+				INFOPLIST_FILE = "Mavens/Mavens-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		89C8922918D907C7009E3E6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Mavens/Mavens-Prefix.pch";
+				INFOPLIST_FILE = "Mavens/Mavens-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		89C8922B18D907C7009E3E6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Mavens.app/Mavens";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Mavens/Mavens-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MavensTests/MavensTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		89C8922C18D907C7009E3E6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Mavens.app/Mavens";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Mavens/Mavens-Prefix.pch";
+				INFOPLIST_FILE = "MavensTests/MavensTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		89C891ED18D907C7009E3E6B /* Build configuration list for PBXProject "Mavens" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89C8922518D907C7009E3E6B /* Debug */,
+				89C8922618D907C7009E3E6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		89C8922718D907C7009E3E6B /* Build configuration list for PBXNativeTarget "Mavens" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89C8922818D907C7009E3E6B /* Debug */,
+				89C8922918D907C7009E3E6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		89C8922A18D907C7009E3E6B /* Build configuration list for PBXNativeTarget "MavensTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89C8922B18D907C7009E3E6B /* Debug */,
+				89C8922C18D907C7009E3E6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 89C891EA18D907C7009E3E6B /* Project object */;
+}
