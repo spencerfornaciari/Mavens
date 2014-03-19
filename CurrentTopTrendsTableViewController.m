@@ -31,41 +31,52 @@
     [super viewDidLoad];
     self.tableView.contentInset = UIEdgeInsetsMake(22, 0, 0, 0);
     
-    [PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error) {
-        if (!user) {
-            NSLog(@"Uh oh. The user cancelled the Twitter login.");
-            return;
-        } else if (user.isNew) {
-            NSLog(@"User signed up and logged in with Twitter!");
-        } else {
-            NSLog(@"User logged in with Twitter!");
-
-            //Querying Parse for trends
-            PFQuery *query = [PFQuery queryWithClassName:@"NewTrend"];
-            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                if (!error) {
-                    // The find succeeded.
-                    self.array = objects;
-                    
-                    for (int i = 0; i < self.array.count; i++) {
-                        NSLog(@"%@", [self.array[i] objectForKey:@"trend"]);
-                    }
-                    
-                    NSLog(@"Successfully retrieved %d scores.", objects.count);
-                    // Do something with the found objects
-//                    for (PFObject *object in objects) {
-//                        NSString *trend = object[@"trend"];
-//                        NSLog(@"%@", trend);
-//                    }
-                } else {
-                    // Log details of the failure
-                    NSLog(@"Error: %@ %@", error, [error userInfo]);
-                }
+    if (![PFUser currentUser]) {
+        [PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error) {
+            if (!user) {
+                NSLog(@"Uh oh. The user cancelled the Twitter login.");
+                return;
+            } else if (user.isNew) {
+                NSLog(@"User signed up and logged in with Twitter!");
+            } else {
+                NSLog(@"User logged in with Twitter!");
+                
+                //Querying Parse for trends
+                
+            }
+        }];
+    } else {
+        NSLog(@"%@", [PFUser currentUser]);
+    }
+    
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"NewTrend"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                self.array = objects;
+                [self.tableView reloadData];
             }];
+            
+            //            for (int i = 0; i < self.array.count; i++) {
+            //                NSLog(@"%@", [self.array[i] objectForKey:@"trend"]);
+            //                NSLog(@"%@", [self.array[i] objectForKey:@"user"]);
+            //            }
+            
+            NSLog(@"Successfully retrieved %d scores.", objects.count);
+            // Do something with the found objects
+            //                    for (PFObject *object in objects) {
+            //                        NSString *trend = object[@"trend"];
+            //                        NSLog(@"%@", trend);
+            //                    }
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
     
-    
+    [self.tableView reloadData];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -77,6 +88,14 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self.tableView reloadData];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
     [self.tableView reloadData];
 }
 
@@ -105,7 +124,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     // Configure the cell...
-    cell.textLabel.text = [_array[indexPath.row] objectForKey:@"trend"];
+    cell.textLabel.text = [self.array[indexPath.row] objectForKey:@"trend"];
     
     return cell;
 }
