@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="SFViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -72,10 +72,10 @@
             </objects>
             <point key="canvasLocation" x="672" y="56"/>
         </scene>
-        <!--View Controller - Submit Trend-->
+        <!--New Trend View Controller - Submit Trend-->
         <scene sceneID="wjj-wv-4Id">
             <objects>
-                <viewController id="ew4-cw-ezn" sceneMemberID="viewController">
+                <viewController id="ew4-cw-ezn" customClass="NewTrendViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SoF-2j-Hjf"/>
                         <viewControllerLayoutGuide type="bottom" id="9by-FZ-Oa1"/>
@@ -83,9 +83,20 @@
                     <view key="view" contentMode="scaleToFill" id="m26-np-ZSd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1wW-i5-yDG">
+                                <rect key="frame" x="20" y="134" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Submit Trend" id="wIf-hw-C8N"/>
+                    <connections>
+                        <outlet property="trendTextField" destination="1wW-i5-yDG" id="6bx-Cf-eEh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sMU-Hb-GMz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

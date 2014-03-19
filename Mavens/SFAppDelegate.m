@@ -18,6 +18,10 @@
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
+//    [PFFacebookUtils initializeFacebook];
+    [PFTwitterUtils initializeWithConsumerKey:@"sWHgfLqyIiTXDtOwVyQhw"
+                               consumerSecret:@"ykWAphdeEuXLZ05DeGjXPur5ckU4zTelkMN7LE"];
+    
     return YES;
 }
 							
@@ -47,5 +51,20 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+#pragma mark - Facebook Login
+
+//- (BOOL)application:(UIApplication *)application
+//            openURL:(NSURL *)url
+//  sourceApplication:(NSString *)sourceApplication
+//         annotation:(id)annotation {
+//    return [FBAppCall handleOpenURL:url
+//                  sourceApplication:sourceApplication
+//                        withSession:[PFFacebookUtils session]];
+//}
+//
+//- (void)applicationDidBecomeActive:(UIApplication *)application {
+//    [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
+//}
 
 @end

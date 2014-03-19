@@ -11,6 +11,8 @@
 
 @interface CurrentTopTrendsTableViewController ()
 
+@property (nonatomic) NSArray *array;
+
 @end
 
 @implementation CurrentTopTrendsTableViewController
@@ -29,11 +31,53 @@
     [super viewDidLoad];
     self.tableView.contentInset = UIEdgeInsetsMake(22, 0, 0, 0);
     
+    [PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error) {
+        if (!user) {
+            NSLog(@"Uh oh. The user cancelled the Twitter login.");
+            return;
+        } else if (user.isNew) {
+            NSLog(@"User signed up and logged in with Twitter!");
+        } else {
+            NSLog(@"User logged in with Twitter!");
+
+            //Querying Parse for trends
+            PFQuery *query = [PFQuery queryWithClassName:@"NewTrend"];
+            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                if (!error) {
+                    // The find succeeded.
+                    self.array = objects;
+                    
+                    for (int i = 0; i < self.array.count; i++) {
+                        NSLog(@"%@", [self.array[i] objectForKey:@"trend"]);
+                    }
+                    
+                    NSLog(@"Successfully retrieved %d scores.", objects.count);
+                    // Do something with the found objects
+//                    for (PFObject *object in objects) {
+//                        NSString *trend = object[@"trend"];
+//                        NSLog(@"%@", trend);
+//                    }
+                } else {
+                    // Log details of the failure
+                    NSLog(@"Error: %@ %@", error, [error userInfo]);
+                }
+            }];
+        }
+    }];
+    
+    
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,7 +97,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 5;
+    return self.array.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -61,7 +105,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     // Configure the cell...
-    cell.textLabel.text = @"Test";
+    cell.textLabel.text = [_array[indexPath.row] objectForKey:@"trend"];
     
     return cell;
 }
