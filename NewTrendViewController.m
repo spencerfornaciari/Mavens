@@ -29,6 +29,7 @@
 {
     [super viewDidLoad];
     self.trendTextField.delegate = self;
+    
     // Do any additional setup after loading the view.
 }
 

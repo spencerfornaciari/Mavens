@@ -29,7 +29,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.tableView.contentInset = UIEdgeInsetsMake(22, 0, 0, 0);
     
     if (![PFUser currentUser]) {
         [PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error) {
@@ -49,13 +48,42 @@
         NSLog(@"%@", [PFUser currentUser]);
     }
     
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
     PFQuery *query = [PFQuery queryWithClassName:@"NewTrend"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
+            
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 self.array = objects;
+                NSSortDescriptor *dateSorter = [[NSSortDescriptor alloc] initWithKey:@"updatedAt" ascending:NO];
+                //                NSLog(@"By age: %@", [objects sortedArrayUsingDescriptors:@[dateSorter]]);
+                
+                self.array = [objects sortedArrayUsingDescriptors:@[dateSorter]];
+                NSLog(@"By age: %@", self.array);
+                
+                
+                
+                for (PFObject *object in objects) {
+                    NSDateFormatter *localDate = [[NSDateFormatter alloc] init];
+                    localDate.dateFormat = @"MM/dd/yy - HH:mm:ss zzz";
+                    NSDate *original = object.updatedAt;
+                    localDate.timeZone = [NSTimeZone systemTimeZone];
+                    NSString *local = [localDate stringFromDate:original];
+                    NSLog(@"Local time: %@", local);
+                }
+                
+                
                 [self.tableView reloadData];
             }];
             
@@ -75,21 +103,6 @@
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
-    
-    [self.tableView reloadData];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [self.tableView reloadData];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -139,8 +152,9 @@
 }
 */
 
-/*
+
 // Override to support editing the table view.
+/*
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
@@ -168,15 +182,18 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    EvaluationViewController *viewController = [segue destinationViewController];
+    viewController.title = [self.array[indexPath.row] objectForKey:@"trend"];
+    viewController.currentObject = self.array[indexPath.row];
 }
-*/
+
 
 @end

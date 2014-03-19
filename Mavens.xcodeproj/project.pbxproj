@@ -35,6 +35,7 @@
 		89C8924918D9144A009E3E6B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C8924818D9144A009E3E6B /* SystemConfiguration.framework */; };
 		89C8924C18D91B41009E3E6B /* NewTrendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C8924B18D91B41009E3E6B /* NewTrendViewController.m */; };
 		89C8924F18D91EDB009E3E6B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C8924E18D91EDB009E3E6B /* LoginViewController.m */; };
+		89C8925218DA50AE009E3E6B /* EvaluationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C8925118DA50AE009E3E6B /* EvaluationViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,8 @@
 		89C8924B18D91B41009E3E6B /* NewTrendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewTrendViewController.m; path = ../NewTrendViewController.m; sourceTree = "<group>"; };
 		89C8924D18D91EDB009E3E6B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../LoginViewController.h; sourceTree = "<group>"; };
 		89C8924E18D91EDB009E3E6B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../LoginViewController.m; sourceTree = "<group>"; };
+		89C8925018DA50AE009E3E6B /* EvaluationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EvaluationViewController.h; path = ../EvaluationViewController.h; sourceTree = "<group>"; };
+		89C8925118DA50AE009E3E6B /* EvaluationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EvaluationViewController.m; path = ../EvaluationViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +213,8 @@
 		89C8923018D909B6009E3E6B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				89C8925018DA50AE009E3E6B /* EvaluationViewController.h */,
+				89C8925118DA50AE009E3E6B /* EvaluationViewController.m */,
 				89C8924D18D91EDB009E3E6B /* LoginViewController.h */,
 				89C8924E18D91EDB009E3E6B /* LoginViewController.m */,
 				89C8924A18D91B41009E3E6B /* NewTrendViewController.h */,
@@ -319,6 +324,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89C8925218DA50AE009E3E6B /* EvaluationViewController.m in Sources */,
 				89C8924C18D91B41009E3E6B /* NewTrendViewController.m in Sources */,
 				89C8920218D907C7009E3E6B /* main.m in Sources */,
 				89C8924F18D91EDB009E3E6B /* LoginViewController.m in Sources */,

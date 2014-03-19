@@ -21,7 +21,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--Current Top Trends Table View Controller - Current Top Trends-->
+        <!--Current Top Trends Table View Controller - Current Trends-->
         <scene sceneID="7a8-5v-COn">
             <objects>
                 <tableViewController id="uBa-mu-iDC" customClass="CurrentTopTrendsTableViewController" sceneMemberID="viewController">
@@ -30,13 +30,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="PpJ-DE-qxN">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="PpJ-DE-qxN">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PpJ-DE-qxN" id="pcP-U4-rQr">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="fFa-iA-VZ7" kind="push" id="oq7-44-Qhd"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -44,14 +47,57 @@
                             <outlet property="delegate" destination="uBa-mu-iDC" id="L58-H4-agU"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Current Top Trends" id="Aex-pC-pCc">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" title="Current Trends" id="Fft-7N-CZJ"/>
                     <size key="freeformSize" width="320" height="568"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ndV-mN-yDp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1208" y="-350"/>
+            <point key="canvasLocation" x="1734" y="-350"/>
+        </scene>
+        <!--Evaluation View Controller-->
+        <scene sceneID="QDW-sj-S04">
+            <objects>
+                <viewController id="fFa-iA-VZ7" customClass="EvaluationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eId-pZ-6Ik"/>
+                        <viewControllerLayoutGuide type="bottom" id="rBx-2p-k5B"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RxA-lB-c23">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zDp-DM-h3T">
+                                <rect key="frame" x="20" y="245" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Good Call">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="goodCallAction:" destination="fFa-iA-VZ7" eventType="touchUpInside" id="gm6-b6-YQG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7bq-5K-A2M">
+                                <rect key="frame" x="20" y="316" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Poor Choice">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="poorChoiceAction:" destination="fFa-iA-VZ7" eventType="touchUpInside" id="t9H-N2-wTa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dRf-iv-GrH"/>
+                    <connections>
+                        <outlet property="goodCallButton" destination="zDp-DM-h3T" id="zub-oj-2sa"/>
+                        <outlet property="poorChoiceButton" destination="7bq-5K-A2M" id="Ojk-JR-MeV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zqG-i4-nf1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2155" y="-350"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="y5G-a5-ayL">
@@ -64,7 +110,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="uBa-mu-iDC" kind="relationship" relationship="viewControllers" id="eS8-E2-PIN"/>
+                        <segue destination="hnH-ZO-Aa6" kind="relationship" relationship="viewControllers" id="eS8-E2-PIN"/>
                         <segue destination="ew4-cw-ezn" kind="relationship" relationship="viewControllers" id="AdC-S5-5lm"/>
                     </connections>
                 </tabBarController>
@@ -84,8 +130,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1wW-i5-yDG">
-                                <rect key="frame" x="20" y="134" width="280" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Trend" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1wW-i5-yDG">
+                                <rect key="frame" x="20" y="83" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -101,6 +147,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sMU-Hb-GMz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1208" y="380"/>
+        </scene>
+        <!--Navigation Controller - Current Top Trends-->
+        <scene sceneID="48j-ng-WdD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hnH-ZO-Aa6" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Current Top Trends" id="Aex-pC-pCc">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1jV-Jr-Pu8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="uBa-mu-iDC" kind="relationship" relationship="rootViewController" id="vN3-2b-5r9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1uw-Nn-GpY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1208" y="-350"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="MIs-m7-bim">
+            <objects>
+                <viewController id="hOa-um-ajk" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="M3j-gg-sRy"/>
+                        <viewControllerLayoutGuide type="bottom" id="LWv-w0-ojO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yw7-11-ehM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1eF-UZ-Gzd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
