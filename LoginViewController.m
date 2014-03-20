@@ -7,7 +7,7 @@
 //
 
 #import "LoginViewController.h"
-#import "CurrentTopTrendsTableViewController.h"
+#import "RecentTrendsTableViewController.h"
 #import <Parse/Parse.h>
 
 @interface LoginViewController ()

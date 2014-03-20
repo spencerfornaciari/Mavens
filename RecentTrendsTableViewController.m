@@ -6,16 +6,16 @@
 //  Copyright (c) 2014 Spencer Fornaciari. All rights reserved.
 //
 
-#import "CurrentTopTrendsTableViewController.h"
+#import "RecentTrendsTableViewController.h"
 #import <Parse/Parse.h>
 
-@interface CurrentTopTrendsTableViewController ()
+@interface RecentTrendsTableViewController ()
 
 @property (nonatomic) NSArray *array;
 
 @end
 
-@implementation CurrentTopTrendsTableViewController
+@implementation RecentTrendsTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -66,21 +66,17 @@
             
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 self.array = objects;
-                NSSortDescriptor *dateSorter = [[NSSortDescriptor alloc] initWithKey:@"updatedAt" ascending:NO];
+                NSSortDescriptor *dateSorter = [[NSSortDescriptor alloc] initWithKey:@"createdAt" ascending:NO];
                 //                NSLog(@"By age: %@", [objects sortedArrayUsingDescriptors:@[dateSorter]]);
                 
                 self.array = [objects sortedArrayUsingDescriptors:@[dateSorter]];
-                NSLog(@"By age: %@", self.array);
-                
-                
                 
                 for (PFObject *object in objects) {
-                    NSDateFormatter *localDate = [[NSDateFormatter alloc] init];
-                    localDate.dateFormat = @"MM/dd/yy - HH:mm:ss zzz";
-                    NSDate *original = object.updatedAt;
-                    localDate.timeZone = [NSTimeZone systemTimeZone];
-                    NSString *local = [localDate stringFromDate:original];
-                    NSLog(@"Local time: %@", local);
+//                    NSDateFormatter *localDate = [[NSDateFormatter alloc] init];
+//                    localDate.dateFormat = @"MM/dd/yy - HH:mm:ss zzz";
+//                    NSDate *original = object.updatedAt;
+//                    localDate.timeZone = [NSTimeZone systemTimeZone];
+//                    NSString *local = [localDate stringFromDate:original];
                 }
                 
                 

@@ -37,11 +37,8 @@
     self.poorChoiceButton.backgroundColor = [UIColor redColor];
     self.poorChoiceButton.tintColor  = [UIColor whiteColor];
 
-    NSLog(@"%@", self.currentObject);
-    
-    PFQuery *query = [PFQuery queryWithClassName:@"NewTrend"];
-    [query whereKey:@"trend"
-            equalTo:[PFObject objectWithoutDataWithClassName:@"trend" objectId:self.currentObject]];
+
+    NSLog(@"%@", [self.currentObject objectForKey:@"numberOfLikes"]);
 
     // Do any additional setup after loading the view.
 }
@@ -71,6 +68,9 @@
 //    trendResponse[@"parent"] = self.currentObject;
 //    
 //    [trendResponse saveInBackground];
+//    
+//    [self.currentObject incrementKey:@"numberOfLikes"];
+//    [self.currentObject saveInBackground];
     
     PFObject *trendResponse = [PFObject objectWithClassName:@"TrendResponse"];
     trendResponse[@"newTrend"] = @"Good Call";
@@ -78,6 +78,9 @@
     PFRelation *relation = [[PFUser currentUser] relationforKey:@"Likes"];
     [relation addObject:self.currentObject];
     [[PFUser currentUser] saveInBackground];
+    
+    [self.currentObject incrementKey:@"numberOfLikes"];
+    [self.currentObject saveInBackground];
     
 }
 
@@ -88,5 +91,8 @@
     PFRelation *relation = [[PFUser currentUser] relationforKey:@"Dislikes"];
     [relation addObject:self.currentObject];
     [[PFUser currentUser] saveInBackground];
+    
+    [self.currentObject incrementKey:@"numberOfDislikes"];
+    [self.currentObject saveInBackground];
 }
 @end

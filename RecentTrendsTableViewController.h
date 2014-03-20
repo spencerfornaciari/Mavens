@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "EvaluationViewController.h"
 
-@interface CurrentTopTrendsTableViewController : UITableViewController
+@interface RecentTrendsTableViewController : UITableViewController
 
 @end

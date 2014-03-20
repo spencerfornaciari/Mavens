@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Current Top Trends Table View Controller-->
+        <!--Recent Trends Table View Controller-->
         <scene sceneID="vsh-xU-RDP">
             <objects>
-                <tableViewController id="nmw-m1-sdM" customClass="CurrentTopTrendsTableViewController" sceneMemberID="viewController">
+                <tableViewController id="nmw-m1-sdM" customClass="RecentTrendsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9iQ-dh-4g2">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,10 +32,10 @@
             </objects>
             <point key="canvasLocation" x="-23" y="928"/>
         </scene>
-        <!--Current Top Trends Table View Controller-->
+        <!--Recent Trends Table View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="CurrentTopTrendsTableViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="RecentTrendsTableViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>

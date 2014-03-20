@@ -22,7 +22,7 @@
 		89C8921A18D907C7009E3E6B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C891F918D907C7009E3E6B /* UIKit.framework */; };
 		89C8922218D907C7009E3E6B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89C8922018D907C7009E3E6B /* InfoPlist.strings */; };
 		89C8922418D907C7009E3E6B /* MavensTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C8922318D907C7009E3E6B /* MavensTests.m */; };
-		89C8922F18D909B0009E3E6B /* CurrentTopTrendsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C8922E18D909B0009E3E6B /* CurrentTopTrendsTableViewController.m */; };
+		89C8922F18D909B0009E3E6B /* RecentTrendsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C8922E18D909B0009E3E6B /* RecentTrendsTableViewController.m */; };
 		89C8923518D913C0009E3E6B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C8923418D913C0009E3E6B /* Parse.framework */; };
 		89C8923718D913E0009E3E6B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C8923618D913E0009E3E6B /* AudioToolbox.framework */; };
 		89C8923918D913F1009E3E6B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C8923818D913F1009E3E6B /* CFNetwork.framework */; };
@@ -69,8 +69,8 @@
 		89C8921F18D907C7009E3E6B /* MavensTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MavensTests-Info.plist"; sourceTree = "<group>"; };
 		89C8922118D907C7009E3E6B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		89C8922318D907C7009E3E6B /* MavensTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MavensTests.m; sourceTree = "<group>"; };
-		89C8922D18D909B0009E3E6B /* CurrentTopTrendsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrentTopTrendsTableViewController.h; path = ../CurrentTopTrendsTableViewController.h; sourceTree = "<group>"; };
-		89C8922E18D909B0009E3E6B /* CurrentTopTrendsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrentTopTrendsTableViewController.m; path = ../CurrentTopTrendsTableViewController.m; sourceTree = "<group>"; };
+		89C8922D18D909B0009E3E6B /* RecentTrendsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecentTrendsTableViewController.h; path = ../RecentTrendsTableViewController.h; sourceTree = "<group>"; };
+		89C8922E18D909B0009E3E6B /* RecentTrendsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecentTrendsTableViewController.m; path = ../RecentTrendsTableViewController.m; sourceTree = "<group>"; };
 		89C8923418D913C0009E3E6B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		89C8923618D913E0009E3E6B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		89C8923818D913F1009E3E6B /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -219,8 +219,8 @@
 				89C8924E18D91EDB009E3E6B /* LoginViewController.m */,
 				89C8924A18D91B41009E3E6B /* NewTrendViewController.h */,
 				89C8924B18D91B41009E3E6B /* NewTrendViewController.m */,
-				89C8922D18D909B0009E3E6B /* CurrentTopTrendsTableViewController.h */,
-				89C8922E18D909B0009E3E6B /* CurrentTopTrendsTableViewController.m */,
+				89C8922D18D909B0009E3E6B /* RecentTrendsTableViewController.h */,
+				89C8922E18D909B0009E3E6B /* RecentTrendsTableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -328,7 +328,7 @@
 				89C8924C18D91B41009E3E6B /* NewTrendViewController.m in Sources */,
 				89C8920218D907C7009E3E6B /* main.m in Sources */,
 				89C8924F18D91EDB009E3E6B /* LoginViewController.m in Sources */,
-				89C8922F18D909B0009E3E6B /* CurrentTopTrendsTableViewController.m in Sources */,
+				89C8922F18D909B0009E3E6B /* RecentTrendsTableViewController.m in Sources */,
 				89C8920F18D907C7009E3E6B /* SFViewController.m in Sources */,
 				89C8920618D907C7009E3E6B /* SFAppDelegate.m in Sources */,
 			);
