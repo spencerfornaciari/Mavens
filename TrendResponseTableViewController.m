@@ -6,16 +6,16 @@
 //  Copyright (c) 2014 Spencer Fornaciari. All rights reserved.
 //
 
-#import "RecentTrendsTableViewController.h"
+#import "TrendResponseTableViewController.h"
 #import <Parse/Parse.h>
 
-@interface RecentTrendsTableViewController ()
+@interface TrendResponseTableViewController ()
 
 @property (nonatomic) NSArray *array;
 
 @end
 
-@implementation RecentTrendsTableViewController
+@implementation TrendResponseTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -45,21 +45,14 @@
             }
         }];
     } else {
-        NSLog(@"%@", [PFUser currentUser]);
+//        NSLog(@"%@", [PFUser currentUser]);
     }
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
     PFQuery *query = [PFQuery queryWithClassName:@"NewTrend"];
+    
+    // Only retrieve the last twenty
+    query.limit = 20;
+    
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
@@ -71,15 +64,6 @@
                 
                 self.array = [objects sortedArrayUsingDescriptors:@[dateSorter]];
                 
-                for (PFObject *object in objects) {
-//                    NSDateFormatter *localDate = [[NSDateFormatter alloc] init];
-//                    localDate.dateFormat = @"MM/dd/yy - HH:mm:ss zzz";
-//                    NSDate *original = object.updatedAt;
-//                    localDate.timeZone = [NSTimeZone systemTimeZone];
-//                    NSString *local = [localDate stringFromDate:original];
-                }
-                
-                
                 [self.tableView reloadData];
             }];
             
@@ -88,7 +72,6 @@
             //                NSLog(@"%@", [self.array[i] objectForKey:@"user"]);
             //            }
             
-            NSLog(@"Successfully retrieved %d scores.", objects.count);
             // Do something with the found objects
             //                    for (PFObject *object in objects) {
             //                        NSString *trend = object[@"trend"];
@@ -99,13 +82,13 @@
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
-}
 
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
     
-    [self.tableView reloadData];
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -150,7 +133,7 @@
 
 
 // Override to support editing the table view.
-/*
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
@@ -160,7 +143,7 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.

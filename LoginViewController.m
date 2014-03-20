@@ -7,7 +7,7 @@
 //
 
 #import "LoginViewController.h"
-#import "RecentTrendsTableViewController.h"
+#import "TrendResponseTableViewController.h"
 #import <Parse/Parse.h>
 
 @interface LoginViewController ()
@@ -40,6 +40,7 @@
             
         }     
     }];
+    
     // Do any additional setup after loading the view.
 }
 

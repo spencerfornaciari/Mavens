@@ -21,10 +21,10 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--Recent Trends Table View Controller - Current Trends-->
+        <!--Trend Response Table View Controller - Current Trends-->
         <scene sceneID="7a8-5v-COn">
             <objects>
-                <tableViewController id="uBa-mu-iDC" customClass="RecentTrendsTableViewController" sceneMemberID="viewController">
+                <tableViewController id="uBa-mu-iDC" customClass="TrendResponseTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4TG-hX-Mm3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

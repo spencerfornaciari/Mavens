@@ -45,7 +45,7 @@
             // The find succeeded.
             
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                NSSortDescriptor *dateSorter = [[NSSortDescriptor alloc] initWithKey:@"numberOfDislikes" ascending:NO];
+                NSSortDescriptor *dateSorter = [[NSSortDescriptor alloc] initWithKey:@"numberOfLikes" ascending:NO];
                 //                NSLog(@"By age: %@", [objects sortedArrayUsingDescriptors:@[dateSorter]]);
                 
                 self.topTrendsArray = [[objects sortedArrayUsingDescriptors:@[dateSorter]]mutableCopy];
@@ -100,7 +100,7 @@
     // Configure the cell...
     cell.textLabel.text = [self.topTrendsArray[indexPath.row] objectForKey:@"trend"];
     
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [self.topTrendsArray[indexPath.row] objectForKey:@"numberOfDislikes"]];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"Likes: %@, Dislikes: %@", [self.topTrendsArray[indexPath.row] objectForKey:@"numberOfLikes"], [self.topTrendsArray[indexPath.row] objectForKey:@"numberOfDislikes"]];
     
     return cell;
 }

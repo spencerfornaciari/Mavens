@@ -51,10 +51,13 @@
     newTrend[@"trend"] = textField.text;
     newTrend[@"numberOfLikes"] = @0;
     newTrend[@"numberOfDislikes"] = @0;
-    newTrend[@"user"] = [PFUser currentUser];
+    newTrend[@"creator"] = [PFUser currentUser];
+
     [newTrend saveInBackground];
     
     NSLog(@"%@", textField.text);
+    
+    textField.text = @"";
 }
 
 /*
