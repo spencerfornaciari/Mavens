@@ -49,6 +49,8 @@
     
     PFObject *newTrend = [PFObject objectWithClassName:@"NewTrend"];
     newTrend[@"trend"] = textField.text;
+    newTrend[@"numberOfLikes"] = @0;
+    newTrend[@"numberOfDislikes"] = @0;
     newTrend[@"user"] = [PFUser currentUser];
     [newTrend saveInBackground];
     
