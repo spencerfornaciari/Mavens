@@ -15,6 +15,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *goodCallButton;
 @property (strong, nonatomic) IBOutlet UIButton *poorChoiceButton;
 
+@property (nonatomic) BOOL canVote;
+
 - (IBAction)goodCallAction:(id)sender;
 - (IBAction)poorChoiceAction:(id)sender;
 
@@ -40,9 +42,6 @@
     self.poorChoiceButton.backgroundColor = [UIColor redColor];
     self.poorChoiceButton.tintColor  = [UIColor whiteColor];
     
-    NSString *currentUser = (NSString *)[[PFUser currentUser] objectId];
-    
-    
     _canLike = TRUE;
     
 //    PFQuery *query = [PFQuery queryWithClassName:@"TrendResponse"];
@@ -52,26 +51,42 @@
 //        //        NSLog(@"%@", responses[0]);
 //     }];
     
-    NSString *trend = [self.currentObject objectForKey:@"trend"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Activity"];
+    [query whereKey:@"trend" equalTo:self.currentObject.objectId];
+    [query whereKey:@"fromUser" equalTo:[PFUser currentUser]];
+    NSLog(@"%@", [self.currentObject objectForKey:@"trend"]);
     
-    PFQuery *query = [PFQuery queryWithClassName:@"TrendResponse"];
-    [query whereKey:@"trend" equalTo:trend];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-        
-            // Do something with the found objects
-            for (PFObject *object in objects) {
-                NSString *objectUser = [[object objectForKey:@"trendResponder"] objectId];
-                if ([objectUser isEqualToString:currentUser]) {
-                    _canLike = FALSE;
-                    break;
-                }
-            }
+    [query findObjectsInBackgroundWithBlock:^(NSArray *comments, NSError *error) {
+        // comments now contains the comments for myPost
+        if (comments.count > 0) {
+            _canVote = FALSE;
+            NSLog(@"You've Voted Already");
         } else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
+            _canVote = TRUE;
+            NSLog(@"You Can Vote");
         }
+        
+        NSLog(@"%d", comments.count);
     }];
+    
+//    PFQuery *query = [PFQuery queryWithClassName:@"TrendResponse"];
+//    [query whereKey:@"trend" equalTo:trend];
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (!error) {
+//        
+//            // Do something with the found objects
+//            for (PFObject *object in objects) {
+//                NSString *objectUser = [[object objectForKey:@"trendResponder"] objectId];
+//                if ([objectUser isEqualToString:currentUser]) {
+//                    _canLike = FALSE;
+//                    break;
+//                }
+//            }
+//        } else {
+//            // Log details of the failure
+//            NSLog(@"Error: %@ %@", error, [error userInfo]);
+//        }
+//    }];
     
 //    [query whereKey:@"trendResponder" equalTo:[PFUser currentUser]];
 //    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -118,64 +133,116 @@
 }
 */
 
+//fromUser : User
+//toUser : User
+//type : String
+//content : String
+//photo : Pointer
+
 - (IBAction)goodCallAction:(id)sender {
-    if (_canLike) {
-        PFObject *trendResponse = [PFObject objectWithClassName:@"TrendResponse"];
-        trendResponse[@"trendResponse"] = @"Agree";
-        trendResponse[@"trendResponder"] = [PFUser currentUser];
-        trendResponse[@"trend"] = [self.currentObject objectForKey:@"trend"];
-        //
-        //    // Add a relation between the Post and Comment
-        trendResponse[@"parent"] = self.currentObject;
+    
+    if (_canVote) {
+        PFObject *response = [PFObject objectWithClassName:@"Activity"];
+        response[@"response"] = @"Confirm";
+        response[@"fromUser"] = [PFUser currentUser];
+        response[@"toUser"] = [self.currentObject objectForKey:@"creator"];
+        //    response[@"toUser"] = self.currentObject.creat
+        response[@"trend"] = self.currentObject.objectId;
         
-        [trendResponse saveInBackground];
-        
-        //    [self.currentObject incrementKey:@"numberOfLikes"];
-        //    [self.currentObject saveInBackground];
-        
-        //    PFObject *trendResponse = [PFObject objectWithClassName:@"TrendResponse"];
-        //    trendResponse[@"newTrend"] = @"Agree";
-        //
-        //    PFRelation *relation = [[PFUser currentUser] relationforKey:@"Likes"];
-        //    [relation addObject:self.currentObject];
-        //    [[PFUser currentUser] saveInBackground];
+        PFRelation *relation = [response relationforKey:@"trend2"];
+        [relation addObject:self.currentObject];
+        [response saveInBackground];
         
         [self.currentObject incrementKey:@"numberOfLikes"];
         [self.currentObject saveInBackground];
-    } else {
-        NSLog(@"You've Already Responded");
+        _canVote = FALSE;
     }
+    
+    
+    
+//    PFRelation *relation = [self.currentObject relationforKey:@"agrees"];
+//    [relation addObject:[PFUser currentUser]];
+//    [self.currentObject saveInBackground];
+    
+//    if (_canLike) {
+//        PFObject *trendResponse = [PFObject objectWithClassName:@"TrendResponse"];
+//        trendResponse[@"trendResponse"] = @"Agree";
+//        trendResponse[@"trendResponder"] = [PFUser currentUser];
+//        trendResponse[@"trend"] = [self.currentObject objectForKey:@"trend"];
+//        //
+//        //    // Add a relation between the Post and Comment
+//        trendResponse[@"parent"] = self.currentObject;
+//        
+//        [trendResponse saveInBackground];
+//        
+//        //    [self.currentObject incrementKey:@"numberOfLikes"];
+//        //    [self.currentObject saveInBackground];
+//        
+//        //    PFObject *trendResponse = [PFObject objectWithClassName:@"TrendResponse"];
+//        //    trendResponse[@"newTrend"] = @"Agree";
+//        //
+//        //    PFRelation *relation = [[PFUser currentUser] relationforKey:@"Likes"];
+//        //    [relation addObject:self.currentObject];
+//        //    [[PFUser currentUser] saveInBackground];
+//        
+//        [self.currentObject incrementKey:@"numberOfLikes"];
+//    } else {
+//        NSLog(@"You've Already Responded");
+//    }
     
     
 }
 
 - (IBAction)poorChoiceAction:(id)sender {
-    if (_canLike) {
-        PFObject *trendResponse = [PFObject objectWithClassName:@"TrendResponse"];
-        trendResponse[@"trendResponse"] = @"Disagree";
-        trendResponse[@"trendResponder"] = [PFUser currentUser];
-        trendResponse[@"trend"] = [self.currentObject objectForKey:@"trend"];
-        //
-        //    // Add a relation between the Post and Comment
-        trendResponse[@"parent"] = self.currentObject;
+    
+    
+    if (_canVote) {
+        PFObject *response = [PFObject objectWithClassName:@"Activity"];
+        response[@"response"] = @"Deny";
+        response[@"fromUser"] = [PFUser currentUser];
+        response[@"toUser"] = [self.currentObject objectForKey:@"creator"];
+        //    response[@"toUser"] = self.currentObject.creat
+        response[@"trend"] = self.currentObject.objectId;
         
-        [trendResponse saveInBackground];
-        
-        //    [self.currentObject incrementKey:@"numberOfLikes"];
-        //    [self.currentObject saveInBackground];
-        
-        //    PFObject *trendResponse = [PFObject objectWithClassName:@"TrendResponse"];
-        //    trendResponse[@"newTrend"] = @"Agree";
-        //
-        //    PFRelation *relation = [[PFUser currentUser] relationforKey:@"Likes"];
-        //    [relation addObject:self.currentObject];
-        //    [[PFUser currentUser] saveInBackground];
+        PFRelation *relation = [response relationforKey:@"trend2"];
+        [relation addObject:self.currentObject];
+        [response saveInBackground];
         
         [self.currentObject incrementKey:@"numberOfDislikes"];
         [self.currentObject saveInBackground];
-    } else {
-        NSLog(@"You've Already Responded");
+        _canVote = FALSE;
     }
+    
+//    PFRelation *relation = [self.currentObject relationforKey:@"deny"];
+//    [relation addObject:[PFUser currentUser]];
+//    [self.currentObject saveInBackground];
+    
+//    if (_canLike) {
+//        PFObject *trendResponse = [PFObject objectWithClassName:@"TrendResponse"];
+//        trendResponse[@"trendResponse"] = @"Disagree";
+//        trendResponse[@"trendResponder"] = [PFUser currentUser];
+//        trendResponse[@"trend"] = [self.currentObject objectForKey:@"trend"];
+//        //
+//        //    // Add a relation between the Post and Comment
+//        trendResponse[@"parent"] = self.currentObject;
+//        
+//        [trendResponse saveInBackground];
+//        
+//        //    [self.currentObject incrementKey:@"numberOfLikes"];
+//        //    [self.currentObject saveInBackground];
+//        
+//        //    PFObject *trendResponse = [PFObject objectWithClassName:@"TrendResponse"];
+//        //    trendResponse[@"newTrend"] = @"Agree";
+//        //
+//        //    PFRelation *relation = [[PFUser currentUser] relationforKey:@"Likes"];
+//        //    [relation addObject:self.currentObject];
+//        //    [[PFUser currentUser] saveInBackground];
+//        
+//        [self.currentObject incrementKey:@"numberOfDislikes"];
+//        [self.currentObject saveInBackground];
+//    } else {
+//        NSLog(@"You've Already Responded");
+//    }
     
 }
 @end

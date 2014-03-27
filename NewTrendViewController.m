@@ -47,7 +47,7 @@
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
     
-    PFObject *newTrend = [PFObject objectWithClassName:@"NewTrend"];
+    PFObject *newTrend = [PFObject objectWithClassName:@"Trends"];
     newTrend[@"trend"] = textField.text;
     newTrend[@"numberOfLikes"] = @0;
     newTrend[@"numberOfDislikes"] = @0;

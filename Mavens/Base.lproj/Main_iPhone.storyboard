@@ -47,7 +47,13 @@
                             <outlet property="delegate" destination="uBa-mu-iDC" id="L58-H4-agU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Current Trends" id="Fft-7N-CZJ"/>
+                    <navigationItem key="navigationItem" title="Current Trends" id="Fft-7N-CZJ">
+                        <barButtonItem key="rightBarButtonItem" title="Login" id="4ho-A0-kZa">
+                            <connections>
+                                <action selector="loginButtonAction:" destination="uBa-mu-iDC" id="eiI-w8-vh3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <size key="freeformSize" width="320" height="568"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ndV-mN-yDp" userLabel="First Responder" sceneMemberID="firstResponder"/>

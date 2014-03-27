@@ -39,7 +39,7 @@
 {
     [super viewWillAppear:animated];
     
-    PFQuery *query = [PFQuery queryWithClassName:@"NewTrend"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Trends"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.

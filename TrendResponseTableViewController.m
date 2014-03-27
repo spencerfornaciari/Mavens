@@ -13,6 +13,8 @@
 
 @property (nonatomic) NSArray *array;
 
+- (IBAction)loginButtonAction:(id)sender;
+
 @end
 
 @implementation TrendResponseTableViewController
@@ -30,25 +32,22 @@
 {
     [super viewDidLoad];
     
-    if (![PFUser currentUser]) {
-        [PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error) {
-            if (!user) {
-                NSLog(@"Uh oh. The user cancelled the Twitter login.");
-                return;
-            } else if (user.isNew) {
-                NSLog(@"User signed up and logged in with Twitter!");
-            } else {
-                NSLog(@"User logged in with Twitter!");
-                
-                //Querying Parse for trends
-                
-            }
-        }];
-    } else {
-//        NSLog(@"%@", [PFUser currentUser]);
-    }
+    NSLog(@"%@", [PFUser currentUser]);
     
-    PFQuery *query = [PFQuery queryWithClassName:@"NewTrend"];
+    
+    
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Trends"];
     
     // Only retrieve the last twenty
     query.limit = 20;
@@ -83,12 +82,6 @@
         }
     }];
 
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -175,4 +168,24 @@
 }
 
 
+- (IBAction)loginButtonAction:(id)sender {
+    
+    if (![PFUser currentUser]) {
+        [PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error) {
+            if (!user) {
+                NSLog(@"Uh oh. The user cancelled the Twitter login.");
+                return;
+            } else if (user.isNew) {
+                NSLog(@"User signed up and logged in with Twitter!");
+            } else {
+                NSLog(@"User logged in with Twitter!");
+                
+                //Querying Parse for trends
+                
+            }
+        }];
+    } else {
+        NSLog(@"%@", [PFUser currentUser]);
+    }
+}
 @end
