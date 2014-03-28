@@ -49,12 +49,24 @@
     
     PFObject *newTrend = [PFObject objectWithClassName:@"Trends"];
     newTrend[@"trend"] = textField.text;
-    newTrend[@"numberOfLikes"] = @0;
+    newTrend[@"numberOfLikes"] = @1;
     newTrend[@"numberOfDislikes"] = @0;
     newTrend[@"creator"] = [PFUser currentUser];
-
     [newTrend saveInBackground];
     
+    NSLog(@"%@", newTrend.objectId);
+    
+    PFObject *response = [PFObject objectWithClassName:@"Activity"];
+    response[@"response"] = @"Confirm";
+    response[@"trendName"] = textField.text;
+    response[@"fromUser"] = [PFUser currentUser];
+    response[@"toUser"] = [PFUser currentUser];
+//    response[@"trend"] = newTrend.objectId;
+//
+//    PFRelation *relation = [response relationforKey:@"trend2"];
+//    [relation addObject:newTrend];
+    [response saveInBackground];
+
     NSLog(@"%@", textField.text);
     
     textField.text = @"";

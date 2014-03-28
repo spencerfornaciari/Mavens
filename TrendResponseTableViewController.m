@@ -12,6 +12,8 @@
 @interface TrendResponseTableViewController ()
 
 @property (nonatomic) NSArray *array;
+@property (nonatomic) PFObject *trendResponse;
+@property (nonatomic) NSArray *secondArray;
 
 - (IBAction)loginButtonAction:(id)sender;
 
@@ -34,7 +36,31 @@
     
     NSLog(@"%@", [PFUser currentUser]);
     
-    
+    PFQuery *query = [PFQuery queryWithClassName:@"Trends"];
+//    [query orderByAscending:@"createdAt"];
+    [query orderByDescending:@"createdAt"];
+    query.limit = 10;
+
+    [query findObjectsInBackgroundWithBlock:^(NSArray *comments, NSError *error) {
+        if (comments.count) {
+            for (PFObject *object in comments) {
+                self.trendResponse = object;
+            
+            
+            PFRelation *relation = self.trendResponse[@"agrees"];
+            
+            PFQuery *query2 = relation.query;
+            [query2 orderByDescending:@"createdAt"];
+            [query2 findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                if (objects) {
+                    NSLog(@"%@", objects);
+                } else {
+                    NSLog(@"Didn't Work");
+                }
+            }];
+            }
+        }
+    }];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -47,21 +73,92 @@
 {
     [super viewWillAppear:animated];
     
-    PFQuery *query = [PFQuery queryWithClassName:@"Trends"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Activity"];
     
-    // Only retrieve the last twenty
+    // Only retrieve the last twenty´
+    //    [query whereKey:(NSString *) notEqualTo:<#(id)#>
+    [query whereKey:@"fromUser" notEqualTo:[PFUser currentUser]];
+    
     query.limit = 20;
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
             
+            
+            NSMutableSet* existingNames = [NSMutableSet set];
+            NSMutableArray* filteredArray = [NSMutableArray array];
+            
+            
+            for (PFObject *object in objects) {
+                if (![existingNames containsObject:[object objectForKey:@"trend"]]) {
+                    [existingNames addObject:[object objectForKey:@"trend"]];
+                    [filteredArray addObject:object];
+                }
+            }
+            
+            
+//            NSMutableArray *array = [NSMutableArray new];
+//            NSInteger index = [array count] - 1;
+////            
+//            for (PFObject *object in objects) {
+//                [array addObjectsFromArray:object.objectId];
+//            }
+//            
+//
+//                
+////            [uniqueArray addObjectsFromArray:[[NSSet setWithArray:array1] allObjects]];
+//
+//
+//            NSMutableArray *uniquearray = [NSMutableArray new];
+//            [uniquearray addObjectsFromArray:[[NSSet setWithArray:objects] allObjects]];
+//            
+//            
+//            for (PFObject *object in [array reverseObjectEnumerator]) {
+////                NSLog(@"All ObjectID: %@", object.objectId);
+//
+//                if ([objects indexOfObject:[object objectForKey:@"trend"] inRange:NSMakeRange(0, index)] != NSNotFound) {
+//                    NSLog(@"Not Found: ObjectID: %@", object.objectId);
+//                    
+//                    [array removeObjectAtIndex:index];
+//                
+//                
+//                }
+//                
+//                
+//                
+//                index--;
+//            }
+//            
+//            for (PFObject *object in uniquearray) {
+//                NSLog(@"Final Object ID: %@", object);
+//            }
+            
+//            NSLog(@"Object Ids: %@", array);
+            
+//            NSArray *copy = [mutableArray copy];
+//            NSInteger index = [copy count] - 1;
+//            for (id object in [copy reverseObjectEnumerator]) {
+//                if ([mutableArray indexOfObject:object inRange:NSMakeRange(0, index)] != NSNotFound) {
+//                    [mutableArray removeObjectAtIndex:index];
+//                }
+//                index--;
+//            }
+//            [copy release];
+            
+//            PFQuery *query2 = [PFQuery queryWithClassName:@"Activity"];
+//            [query2 whereKey:@"trend" containsAllObjectsInArray:<#(NSArray *)#>]
+            
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                self.array = objects;
+                //self.array = objects;
+                NSLog(@"Filtered Count: %d", filteredArray.count);
+                
+                NSLog(@"Property Count: %d", self.array.count);
                 NSSortDescriptor *dateSorter = [[NSSortDescriptor alloc] initWithKey:@"createdAt" ascending:NO];
                 //                NSLog(@"By age: %@", [objects sortedArrayUsingDescriptors:@[dateSorter]]);
                 
-                self.array = [objects sortedArrayUsingDescriptors:@[dateSorter]];
+                self.array = [filteredArray sortedArrayUsingDescriptors:@[dateSorter]];
+                NSLog(@"%@", self.array);
                 
                 [self.tableView reloadData];
             }];
@@ -101,6 +198,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
+    
+    NSLog(@"Table View Count: %d", self.array.count);
+    
     return self.array.count;
 }
 
@@ -109,7 +209,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     // Configure the cell...
-    cell.textLabel.text = [self.array[indexPath.row] objectForKey:@"trend"];
+    cell.textLabel.text = [self.array[indexPath.row] objectForKey:@"trendName"];
     
     return cell;
 }

@@ -69,6 +69,15 @@
         NSLog(@"%d", comments.count);
     }];
     
+    PFQuery *query2 = [PFQuery queryWithClassName:@"Activity"];
+    [query2 whereKey:@"fromUser" notEqualTo:[PFUser currentUser]];
+    
+    [query2 findObjectsInBackgroundWithBlock:^(NSArray *comments, NSError *error) {
+        // comments now contains the comments for myPost
+        NSLog(@"Number of trends to review: %d", comments.count);
+    }];
+
+    
 //    PFQuery *query = [PFQuery queryWithClassName:@"TrendResponse"];
 //    [query whereKey:@"trend" equalTo:trend];
 //    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -146,12 +155,15 @@
         response[@"response"] = @"Confirm";
         response[@"fromUser"] = [PFUser currentUser];
         response[@"toUser"] = [self.currentObject objectForKey:@"creator"];
-        //    response[@"toUser"] = self.currentObject.creat
         response[@"trend"] = self.currentObject.objectId;
         
         PFRelation *relation = [response relationforKey:@"trend2"];
         [relation addObject:self.currentObject];
         [response saveInBackground];
+        
+        PFRelation *relation2 = [response relationforKey:@"responders"];
+        [relation2 addObject:[PFUser currentUser]];
+        [self.currentObject saveInBackground];
         
         [self.currentObject incrementKey:@"numberOfLikes"];
         [self.currentObject saveInBackground];
@@ -201,21 +213,22 @@
         response[@"response"] = @"Deny";
         response[@"fromUser"] = [PFUser currentUser];
         response[@"toUser"] = [self.currentObject objectForKey:@"creator"];
-        //    response[@"toUser"] = self.currentObject.creat
+        response[@"trendID"] = self.currentObject.objectId;
         response[@"trend"] = self.currentObject.objectId;
         
-        PFRelation *relation = [response relationforKey:@"trend2"];
-        [relation addObject:self.currentObject];
+//        response[@"toUser"] = [self.currentObject objectForKey:@"creator"];
+//        response[@"trendName"] = [self.currentObject objectForKey:@"trend"];
+//        response[@"trend"] = self.currentObject.objectId;
         [response saveInBackground];
         
-        [self.currentObject incrementKey:@"numberOfDislikes"];
-        [self.currentObject saveInBackground];
+//        [self.currentObject incrementKey:@"numberOfDislikes"];
+//        [self.currentObject saveInBackground];
         _canVote = FALSE;
     }
     
-//    PFRelation *relation = [self.currentObject relationforKey:@"deny"];
-//    [relation addObject:[PFUser currentUser]];
-//    [self.currentObject saveInBackground];
+    PFRelation *relation = [self.currentObject relationforKey:@"deny"];
+    [relation addObject:[PFUser currentUser]];
+    [self.currentObject saveInBackground];
     
 //    if (_canLike) {
 //        PFObject *trendResponse = [PFObject objectWithClassName:@"TrendResponse"];
