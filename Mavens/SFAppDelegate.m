@@ -7,6 +7,7 @@
 //
 
 #import "SFAppDelegate.h"
+#import "GAI.h"
 
 @implementation SFAppDelegate
 
@@ -21,6 +22,19 @@
 //    [PFFacebookUtils initializeFacebook];
     [PFTwitterUtils initializeWithConsumerKey:@"sWHgfLqyIiTXDtOwVyQhw"
                                consumerSecret:@"ykWAphdeEuXLZ05DeGjXPur5ckU4zTelkMN7LE"];
+    
+    
+    // Optional: automatically send uncaught exceptions to Google Analytics.
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    [GAI sharedInstance].dispatchInterval = 20;
+    
+    // Optional: set Logger to VERBOSE for debug information.
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    
+    // Initialize tracker. Replace with your tracking ID.
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-6557341-7"];
     
     return YES;
 }

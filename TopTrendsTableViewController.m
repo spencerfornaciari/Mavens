@@ -8,6 +8,9 @@
 
 #import "TopTrendsTableViewController.h"
 #import <Parse/Parse.h>
+#import "GAIDictionaryBuilder.h"
+#import "GAIFields.h"
+
 
 @interface TopTrendsTableViewController ()
 - (IBAction)sortTrends:(id)sender;
@@ -91,6 +94,13 @@
     for (Trend *trend in self.topTrendsArray) {
         NSLog(@"%d", trend.likes);
     }
+    
+    //Google Analytics Tracking
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName
+           value:@"Top Trends Screen"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
+    
 }
 
 - (void)didReceiveMemoryWarning
