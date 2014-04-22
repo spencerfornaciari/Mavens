@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89B49BEA1905D00100B8C6D0 /* TopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B49BE91905D00000B8C6D0 /* TopTableViewCell.m */; };
 		89C891F618D907C7009E3E6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C891F518D907C7009E3E6B /* Foundation.framework */; };
 		89C891F818D907C7009E3E6B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C891F718D907C7009E3E6B /* CoreGraphics.framework */; };
 		89C891FA18D907C7009E3E6B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C891F918D907C7009E3E6B /* UIKit.framework */; };
@@ -51,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		89B49BE81905D00000B8C6D0 /* TopTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopTableViewCell.h; path = ../TopTableViewCell.h; sourceTree = "<group>"; };
+		89B49BE91905D00000B8C6D0 /* TopTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopTableViewCell.m; path = ../TopTableViewCell.m; sourceTree = "<group>"; };
 		89C891F218D907C7009E3E6B /* Mavens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mavens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89C891F518D907C7009E3E6B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		89C891F718D907C7009E3E6B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -130,6 +133,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		89B49BE71905CFE800B8C6D0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				89B49BE81905D00000B8C6D0 /* TopTableViewCell.h */,
+				89B49BE91905D00000B8C6D0 /* TopTableViewCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		89C891E918D907C7009E3E6B = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +186,7 @@
 		89C891FB18D907C7009E3E6B /* Mavens */ = {
 			isa = PBXGroup;
 			children = (
+				89B49BE71905CFE800B8C6D0 /* Views */,
 				89C8925618DB43F7009E3E6B /* Models */,
 				89C8923018D909B6009E3E6B /* Controllers */,
 				89C8920418D907C7009E3E6B /* SFAppDelegate.h */,
@@ -347,6 +360,7 @@
 				89C8920218D907C7009E3E6B /* main.m in Sources */,
 				89C8925918DB440A009E3E6B /* Trend.m in Sources */,
 				89C8925518DA7718009E3E6B /* TopTrendsTableViewController.m in Sources */,
+				89B49BEA1905D00100B8C6D0 /* TopTableViewCell.m in Sources */,
 				89C8924F18D91EDB009E3E6B /* LoginViewController.m in Sources */,
 				89C8922F18D909B0009E3E6B /* TrendResponseTableViewController.m in Sources */,
 				89C8920F18D907C7009E3E6B /* SFViewController.m in Sources */,
@@ -573,6 +587,7 @@
 				89C8922918D907C7009E3E6B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		89C8922A18D907C7009E3E6B /* Build configuration list for PBXNativeTarget "MavensTests" */ = {
 			isa = XCConfigurationList;
@@ -581,6 +596,7 @@
 				89C8922C18D907C7009E3E6B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

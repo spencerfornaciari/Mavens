@@ -40,16 +40,32 @@
     [super viewWillAppear:animated];
     
     PFQuery *query = [PFQuery queryWithClassName:@"Trends"];
-    query.limit = 15;
+//    query.limit = 15;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
-            
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                NSSortDescriptor *dateSorter = [[NSSortDescriptor alloc] initWithKey:@"numberOfLikes" ascending:NO];
+//                NSSortDescriptor *dateSorter = [[NSSortDescriptor alloc] initWithKey:@"numberOfLikes" ascending:NO];
                 //                NSLog(@"By age: %@", [objects sortedArrayUsingDescriptors:@[dateSorter]]);
                 
-                self.topTrendsArray = [[objects sortedArrayUsingDescriptors:@[dateSorter]]mutableCopy];
+                NSMutableArray *tempArray = [NSMutableArray new];
+                
+                NSLog(@"Object: %@", [objects[0] objectForKey:@"trend"]);
+                
+                for (PFObject *object in objects) {
+                    Trend *trend = [Trend new];
+                    trend.trendName = [object objectForKey:@"trend"];
+                    trend.likes = [[object objectForKey:@"numberOfLikes"] integerValue];
+                    trend.dislikes = [[object objectForKey:@"numberOfDislikes"] integerValue];
+                    
+                    [tempArray addObject:trend];
+                    
+                    NSLog(@"%@", trend.trendName);
+                }
+                
+                NSSortDescriptor *dateSorter = [[NSSortDescriptor alloc] initWithKey:@"likes" ascending:NO];
+                
+                self.topTrendsArray = [[tempArray sortedArrayUsingDescriptors:@[dateSorter]] copy]; //[[objects sortedArrayUsingDescriptors:@[dateSorter]]mutableCopy];
                 
                 [self.tableView reloadData];
             }];
@@ -71,6 +87,9 @@
         }
     }];
 
+    for (Trend *trend in self.topTrendsArray) {
+        NSLog(@"%d", trend.likes);
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -96,12 +115,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    TopTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     // Configure the cell...
-    cell.textLabel.text = [self.topTrendsArray[indexPath.row] objectForKey:@"trend"];
+    [cell setTrend:self.topTrendsArray[indexPath.row]];
     
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Likes: %@, Dislikes: %@", [self.topTrendsArray[indexPath.row] objectForKey:@"numberOfLikes"], [self.topTrendsArray[indexPath.row] objectForKey:@"numberOfDislikes"]];
+//    cell.textLabel.text = [self.topTrendsArray[indexPath.row] objectForKey:@"trend"];
+//    
+//    cell.detailTextLabel.text = [NSString stringWithFormat:@"Likes: %@, Dislikes: %@", [self.topTrendsArray[indexPath.row] objectForKey:@"numberOfLikes"], [self.topTrendsArray[indexPath.row] objectForKey:@"numberOfDislikes"]];
     
     return cell;
 }

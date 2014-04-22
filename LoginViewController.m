@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "TrendResponseTableViewController.h"
 #import <Parse/Parse.h>
+#import "TrendResponseTableViewController.h"
 
 @interface LoginViewController ()
 
@@ -29,17 +30,26 @@
 {
     [super viewDidLoad];
     
-    [PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error) {
-        if (!user) {
-            NSLog(@"Uh oh. The user cancelled the Twitter login.");
-            return;
-        } else if (user.isNew) {
-            NSLog(@"User signed up and logged in with Twitter!");
-        } else {
-            NSLog(@"User logged in with Twitter!");
-            
-        }     
-    }];
+    if (![PFUser currentUser]) {
+        [PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error) {
+            if (!user) {
+                NSLog(@"Uh oh. The user cancelled the Twitter login.");
+                return;
+            } else if (user.isNew) {
+                NSLog(@"User signed up and logged in with Twitter!");
+            } else {
+                NSLog(@"User logged in with Twitter!");
+                
+                UITabBarController *tabController = [self.storyboard instantiateViewControllerWithIdentifier:@"mavenTabController"];
+                [self presentViewController:tabController animated:YES completion:nil];
+                
+            }
+        }];
+    } else {
+        NSLog(@"%@", [PFUser currentUser]);
+        UITabBarController *tabController = [self.storyboard instantiateViewControllerWithIdentifier:@"mavenTabController"];
+        [self presentViewController:tabController animated:YES completion:nil];
+    }
     
     // Do any additional setup after loading the view.
 }

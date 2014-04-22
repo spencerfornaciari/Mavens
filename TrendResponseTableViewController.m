@@ -270,22 +270,6 @@
 
 - (IBAction)loginButtonAction:(id)sender {
     
-    if (![PFUser currentUser]) {
-        [PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error) {
-            if (!user) {
-                NSLog(@"Uh oh. The user cancelled the Twitter login.");
-                return;
-            } else if (user.isNew) {
-                NSLog(@"User signed up and logged in with Twitter!");
-            } else {
-                NSLog(@"User logged in with Twitter!");
-                
-                //Querying Parse for trends
-                
-            }
-        }];
-    } else {
-        NSLog(@"%@", [PFUser currentUser]);
-    }
+
 }
 @end

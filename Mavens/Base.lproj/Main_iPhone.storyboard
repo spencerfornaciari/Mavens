@@ -20,6 +20,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="197" y="56"/>
         </scene>
         <!--Trend Response Table View Controller - Current Trends-->
         <scene sceneID="7a8-5v-COn">
@@ -108,7 +109,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="y5G-a5-ayL">
             <objects>
-                <tabBarController definesPresentationContext="YES" id="2N4-hk-Edn" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="mavenTabController" definesPresentationContext="YES" id="2N4-hk-Edn" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Oid-H6-RcA">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
@@ -176,23 +177,6 @@
             </objects>
             <point key="canvasLocation" x="1208" y="-350"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="MIs-m7-bim">
-            <objects>
-                <viewController id="hOa-um-ajk" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="M3j-gg-sRy"/>
-                        <viewControllerLayoutGuide type="bottom" id="LWv-w0-ojO"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="yw7-11-ehM">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1eF-UZ-Gzd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
         <!--Top Trends Table View Controller - Top Trends-->
         <scene sceneID="gm4-Ms-TN8">
             <objects>
@@ -202,29 +186,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="HCa-Bf-aEm" detailTextLabel="MJ8-DK-Ccw" style="IBUITableViewCellStyleSubtitle" id="ecY-FU-rX8">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="ecY-FU-rX8" customClass="TopTableViewCell">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ecY-FU-rX8" id="fc8-AS-kAk">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HCa-Bf-aEm">
-                                            <rect key="frame" x="15" y="3" width="34" height="22"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cwh-8e-peL">
+                                            <rect key="frame" x="20" y="11" width="174" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MJ8-DK-Ccw">
-                                            <rect key="frame" x="15" y="25" width="32" height="15"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N44-jK-aay">
+                                            <rect key="frame" x="202" y="0.0" width="42" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPb-bf-cQv">
+                                            <rect key="frame" x="258" y="0.0" width="42" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="agreeLabel" destination="N44-jK-aay" id="SkT-ZR-QPM"/>
+                                    <outlet property="disagreeLabel" destination="KPb-bf-cQv" id="xh2-vu-ZIY"/>
+                                    <outlet property="trendLabel" destination="Cwh-8e-peL" id="6Fs-9a-NSY"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
