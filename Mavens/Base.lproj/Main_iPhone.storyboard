@@ -226,7 +226,13 @@
                             <outlet property="delegate" destination="7B5-Ts-gPD" id="MeP-Ge-pep"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Top Trends" id="Gk9-Js-IOj"/>
+                    <navigationItem key="navigationItem" title="Top Trends" id="Gk9-Js-IOj">
+                        <barButtonItem key="rightBarButtonItem" title="Sort" id="ahv-Nw-4fJ">
+                            <connections>
+                                <action selector="sortTrends:" destination="7B5-Ts-gPD" id="Uf1-WJ-dcF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eJX-bT-Nfr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

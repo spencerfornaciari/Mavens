@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 
 @interface TopTrendsTableViewController ()
+- (IBAction)sortTrends:(id)sender;
 
 @end
 
@@ -177,4 +178,33 @@
 }
 */
 
+- (IBAction)sortTrends:(id)sender {
+    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Sort Trends" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"By Agrees", @"By Disagress", nil];
+    
+    [action showInView:self.view];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        case 0:
+        {
+            NSSortDescriptor *dateSorter = [[NSSortDescriptor alloc] initWithKey:@"likes" ascending:NO];
+            self.topTrendsArray = [[self.topTrendsArray sortedArrayUsingDescriptors:@[dateSorter]] copy];
+            [self.tableView reloadData];
+        }
+            break;
+        case 1:
+        {
+            NSSortDescriptor *dateSorter = [[NSSortDescriptor alloc] initWithKey:@"dislikes" ascending:NO];
+            self.topTrendsArray = [[self.topTrendsArray sortedArrayUsingDescriptors:@[dateSorter]] copy];
+            [self.tableView reloadData];
+        }
+           
+            break;
+            
+        default:
+            break;
+    }
+}
 @end

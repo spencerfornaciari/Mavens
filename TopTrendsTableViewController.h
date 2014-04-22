@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TopTableViewCell.h"
 
-@interface TopTrendsTableViewController : UITableViewController
+@interface TopTrendsTableViewController : UITableViewController <UIActionSheetDelegate>
 
 @property (nonatomic) NSMutableArray *topTrendsArray;
 
