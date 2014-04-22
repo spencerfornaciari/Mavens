@@ -73,6 +73,11 @@
 {
     [super viewWillAppear:animated];
     
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName
+           value:@"Trend Response Screen"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
+/*
     PFQuery *query = [PFQuery queryWithClassName:@"Activity"];
     
     // Only retrieve the last twenty´
@@ -178,7 +183,7 @@
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
-
+    */
 }
 
 - (void)didReceiveMemoryWarning

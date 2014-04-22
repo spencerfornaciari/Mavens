@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "TopTableViewCell.h"
-#import "GAI.h"
 
 @interface TopTrendsTableViewController : UITableViewController <UIActionSheetDelegate>
 

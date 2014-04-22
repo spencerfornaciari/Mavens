@@ -12,6 +12,7 @@
 		89B49C371906E53100B8C6D0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89B49C361906E53100B8C6D0 /* CoreData.framework */; };
 		89B49C391906E53900B8C6D0 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89B49C381906E53900B8C6D0 /* AdSupport.framework */; };
 		89B49C3B1906E55E00B8C6D0 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89B49C3A1906E55E00B8C6D0 /* libGoogleAnalyticsServices.a */; };
+		89B49C3E19070C2800B8C6D0 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B49C3D19070C2800B8C6D0 /* Constants.m */; };
 		89C891F618D907C7009E3E6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C891F518D907C7009E3E6B /* Foundation.framework */; };
 		89C891F818D907C7009E3E6B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C891F718D907C7009E3E6B /* CoreGraphics.framework */; };
 		89C891FA18D907C7009E3E6B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C891F918D907C7009E3E6B /* UIKit.framework */; };
@@ -69,6 +70,8 @@
 		89B49C361906E53100B8C6D0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		89B49C381906E53900B8C6D0 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		89B49C3A1906E55E00B8C6D0 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = ../../../Downloads/GoogleAnalyticsServicesiOS_3.06/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		89B49C3C19070C2800B8C6D0 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		89B49C3D19070C2800B8C6D0 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		89C891F218D907C7009E3E6B /* Mavens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mavens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89C891F518D907C7009E3E6B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		89C891F718D907C7009E3E6B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -176,6 +179,8 @@
 		89C891E918D907C7009E3E6B = {
 			isa = PBXGroup;
 			children = (
+				89B49C3C19070C2800B8C6D0 /* Constants.h */,
+				89B49C3D19070C2800B8C6D0 /* Constants.m */,
 				89B49C2F1905FE5400B8C6D0 /* Google */,
 				89B49C2C1905F61000B8C6D0 /* UIColor+MavenColors.h */,
 				89B49C2D1905F61000B8C6D0 /* UIColor+MavenColors.m */,
@@ -403,6 +408,7 @@
 				89B49C2E1905F61000B8C6D0 /* UIColor+MavenColors.m in Sources */,
 				89C8920F18D907C7009E3E6B /* SFViewController.m in Sources */,
 				89C8920618D907C7009E3E6B /* SFAppDelegate.m in Sources */,
+				89B49C3E19070C2800B8C6D0 /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

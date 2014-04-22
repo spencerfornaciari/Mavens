@@ -8,8 +8,6 @@
 
 #import "TopTrendsTableViewController.h"
 #import <Parse/Parse.h>
-#import "GAIDictionaryBuilder.h"
-#import "GAIFields.h"
 
 
 @interface TopTrendsTableViewController ()
@@ -64,7 +62,6 @@
                     
                     [tempArray addObject:trend];
                     
-                    NSLog(@"%@", trend.trendName);
                 }
                 
                 NSSortDescriptor *dateSorter = [[NSSortDescriptor alloc] initWithKey:@"likes" ascending:NO];

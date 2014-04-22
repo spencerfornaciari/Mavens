@@ -8,6 +8,8 @@
 
 #import "NewTrendViewController.h"
 #import <Parse/Parse.h>
+#import "GAIDictionaryBuilder.h"
+#import "GAIFields.h"
 
 @interface NewTrendViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *trendTextField;
@@ -31,6 +33,16 @@
     self.trendTextField.delegate = self;
     
     // Do any additional setup after loading the view.
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName
+           value:@"New Trends Screen"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
 - (void)didReceiveMemoryWarning
