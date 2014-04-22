@@ -33,11 +33,11 @@
     
     self.agreeLabel.text = [NSString stringWithFormat:@"%d", self.trend.likes];
     self.agreeLabel.tintColor = [UIColor whiteColor];
-    self.agreeLabel.backgroundColor = [UIColor greenColor];
+    self.agreeLabel.backgroundColor = [UIColor mavenGreenColor];
     
     self.disagreeLabel.text = [NSString stringWithFormat:@"%d", self.trend.dislikes];
     self.disagreeLabel.tintColor = [UIColor whiteColor];
-    self.disagreeLabel.backgroundColor = [UIColor redColor];
+    self.disagreeLabel.backgroundColor = [UIColor mavenRedColor];
 }
 
 

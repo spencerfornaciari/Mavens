@@ -66,7 +66,7 @@
                 
                 NSSortDescriptor *dateSorter = [[NSSortDescriptor alloc] initWithKey:@"likes" ascending:NO];
                 
-                self.topTrendsArray = [[tempArray sortedArrayUsingDescriptors:@[dateSorter]] copy]; //[[objects sortedArrayUsingDescriptors:@[dateSorter]]mutableCopy];
+                self.topTrendsArray = [tempArray sortedArrayUsingDescriptors:@[dateSorter]]; //[[objects sortedArrayUsingDescriptors:@[dateSorter]]mutableCopy];
                 
                 [self.tableView reloadData];
             }];
@@ -190,14 +190,14 @@
         case 0:
         {
             NSSortDescriptor *dateSorter = [[NSSortDescriptor alloc] initWithKey:@"likes" ascending:NO];
-            self.topTrendsArray = [[self.topTrendsArray sortedArrayUsingDescriptors:@[dateSorter]] copy];
+            self.topTrendsArray = [self.topTrendsArray sortedArrayUsingDescriptors:@[dateSorter]];
             [self.tableView reloadData];
         }
             break;
         case 1:
         {
             NSSortDescriptor *dateSorter = [[NSSortDescriptor alloc] initWithKey:@"dislikes" ascending:NO];
-            self.topTrendsArray = [[self.topTrendsArray sortedArrayUsingDescriptors:@[dateSorter]] copy];
+            self.topTrendsArray = [self.topTrendsArray sortedArrayUsingDescriptors:@[dateSorter]];
             [self.tableView reloadData];
         }
            

@@ -11,6 +11,6 @@
 
 @interface TopTrendsTableViewController : UITableViewController <UIActionSheetDelegate>
 
-@property (nonatomic) NSMutableArray *topTrendsArray;
+@property (nonatomic) NSArray *topTrendsArray;
 
 @end
