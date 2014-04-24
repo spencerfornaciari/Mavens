@@ -31,6 +31,7 @@
 {
     [super viewDidLoad];
     self.trendTextField.delegate = self;
+    self.numberOfCharactersRemaining.text = [NSString stringWithFormat:@"0/100"];
     
     // Do any additional setup after loading the view.
 }
@@ -89,6 +90,14 @@
                                                           action:@"button_press"  // Event action (required)
                                                            label:@"new_trend"     // Event label
                                                            value:nil] build]];    // Event value
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSUInteger newLength = [textField.text length] + [string length] - range.length;
+    
+    //Sets the trend length to 100 characters    
+    self.numberOfCharactersRemaining.text = [NSString stringWithFormat:@"%d/100", newLength];
+    return (newLength > 99) ? NO : YES;
 }
 
 /*

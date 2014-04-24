@@ -10,5 +10,6 @@
 #import "GAI.h"
 
 @interface NewTrendViewController : UIViewController <UITextFieldDelegate>
+@property (strong, nonatomic) IBOutlet UILabel *numberOfCharactersRemaining;
 
 @end
