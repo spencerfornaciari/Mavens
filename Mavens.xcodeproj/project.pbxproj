@@ -13,6 +13,7 @@
 		89B49C391906E53900B8C6D0 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89B49C381906E53900B8C6D0 /* AdSupport.framework */; };
 		89B49C3B1906E55E00B8C6D0 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89B49C3A1906E55E00B8C6D0 /* libGoogleAnalyticsServices.a */; };
 		89B49C3E19070C2800B8C6D0 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B49C3D19070C2800B8C6D0 /* Constants.m */; };
+		89B49C501909B26E00B8C6D0 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89B49C4E1909B25B00B8C6D0 /* libGoogleAnalyticsServices.a */; };
 		89C891F618D907C7009E3E6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C891F518D907C7009E3E6B /* Foundation.framework */; };
 		89C891F818D907C7009E3E6B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C891F718D907C7009E3E6B /* CoreGraphics.framework */; };
 		89C891FA18D907C7009E3E6B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C891F918D907C7009E3E6B /* UIKit.framework */; };
@@ -72,6 +73,7 @@
 		89B49C3A1906E55E00B8C6D0 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = ../../../Downloads/GoogleAnalyticsServicesiOS_3.06/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		89B49C3C19070C2800B8C6D0 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		89B49C3D19070C2800B8C6D0 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		89B49C4E1909B25B00B8C6D0 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		89C891F218D907C7009E3E6B /* Mavens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mavens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89C891F518D907C7009E3E6B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		89C891F718D907C7009E3E6B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -122,6 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89B49C501909B26E00B8C6D0 /* libGoogleAnalyticsServices.a in Frameworks */,
 				89B49C3B1906E55E00B8C6D0 /* libGoogleAnalyticsServices.a in Frameworks */,
 				89B49C391906E53900B8C6D0 /* AdSupport.framework in Frameworks */,
 				89B49C371906E53100B8C6D0 /* CoreData.framework in Frameworks */,
@@ -166,6 +169,7 @@
 		89B49C2F1905FE5400B8C6D0 /* Google */ = {
 			isa = PBXGroup;
 			children = (
+				89B49C4E1909B25B00B8C6D0 /* libGoogleAnalyticsServices.a */,
 				89B49C301905FE6100B8C6D0 /* GAI.h */,
 				89B49C311905FE6100B8C6D0 /* GAIDictionaryBuilder.h */,
 				89B49C321905FE6100B8C6D0 /* GAIFields.h */,
@@ -553,6 +557,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/spencerfornaciari/Downloads/GoogleAnalyticsServicesiOS_3.06,
+					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -574,6 +579,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/spencerfornaciari/Downloads/GoogleAnalyticsServicesiOS_3.06,
+					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

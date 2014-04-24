@@ -82,6 +82,13 @@
     NSLog(@"%@", textField.text);
     
     textField.text = @"";
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"     // Event category (required)
+                                                          action:@"button_press"  // Event action (required)
+                                                           label:@"new_trend"     // Event label
+                                                           value:nil] build]];    // Event value
 }
 
 /*
