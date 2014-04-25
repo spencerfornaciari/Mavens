@@ -50,7 +50,7 @@
 //        NSLog(@"%@", responses);
 //        //        NSLog(@"%@", responses[0]);
 //     }];
-    
+    /*
     PFQuery *query = [PFQuery queryWithClassName:@"Activity"];
     [query whereKey:@"trend" equalTo:self.currentObject.objectId];
     [query whereKey:@"fromUser" equalTo:[PFUser currentUser]];
@@ -75,7 +75,7 @@
     [query2 findObjectsInBackgroundWithBlock:^(NSArray *comments, NSError *error) {
         // comments now contains the comments for myPost
         NSLog(@"Number of trends to review: %d", comments.count);
-    }];
+    }];*/
 
     
 //    PFQuery *query = [PFQuery queryWithClassName:@"TrendResponse"];
@@ -131,7 +131,7 @@
     
     id tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName
-           value:@"Evaluation Screen"];
+           value:[NSString stringWithFormat:@"Evaluation Screen: %@", self.title]];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 

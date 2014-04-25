@@ -35,7 +35,7 @@
     [super viewDidLoad];
     
     NSLog(@"%@", [PFUser currentUser]);
-    
+    /*
     PFQuery *query = [PFQuery queryWithClassName:@"Trends"];
 //    [query orderByAscending:@"createdAt"];
     [query orderByDescending:@"createdAt"];
@@ -61,7 +61,7 @@
             }
         }
     }];
-    
+    */
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -77,7 +77,7 @@
     [tracker set:kGAIScreenName
            value:@"Trend Response Screen"];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
-/*
+
     PFQuery *query = [PFQuery queryWithClassName:@"Activity"];
     
     // Only retrieve the last twenty´
@@ -183,7 +183,7 @@
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
-    */
+
 }
 
 - (void)didReceiveMemoryWarning

@@ -8,6 +8,7 @@
 
 #import "TopTrendsTableViewController.h"
 #import <Parse/Parse.h>
+#import "EvaluationViewController.h"
 
 
 @interface TopTrendsTableViewController ()
@@ -213,5 +214,15 @@
         default:
             break;
     }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    EvaluationViewController *viewController = [segue destinationViewController];
+    viewController.title = [self.topTrendsArray[indexPath.row] trendName];
+    viewController.currentObject = self.topTrendsArray[indexPath.row];
+    NSLog(@"%@", [self.topTrendsArray[indexPath.row] trendName]);
 }
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "Trend.h"
 
 @interface MavensTests : XCTestCase
 
@@ -26,9 +27,10 @@
     [super tearDown];
 }
 
-- (void)testExample
+-(void)testTrend
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    Trend *trend = [Trend new];
+    XCTAssertNotNil(trend, @"This trend is not nil");
+//    XCTAssertNil(trend.trendName, @"This trend has a nil value by default");
 }
-
 @end
