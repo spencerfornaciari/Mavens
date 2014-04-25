@@ -10,7 +10,8 @@
 
 @interface Trend : NSObject
 
-@property (nonatomic) NSString *trendName;
+@property (nonatomic) NSString *name;
+@property (nonatomic) NSString *category;
 @property (nonatomic) NSInteger likes;
 @property (nonatomic) NSInteger dislikes;
 

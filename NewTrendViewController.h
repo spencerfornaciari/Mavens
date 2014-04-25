@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GAI.h"
 
-@interface NewTrendViewController : UIViewController <UITextFieldDelegate>
+@interface NewTrendViewController : UIViewController <UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *numberOfCharactersRemaining;
+@property (strong, nonatomic) IBOutlet UIPickerView *categoryPicker;
+@property (strong, nonatomic) IBOutlet UIButton *submissionButton;
+- (IBAction)trendSubmission:(id)sender;
+
+
 
 @end

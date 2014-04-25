@@ -29,7 +29,7 @@
 {
     _trend = trend;
 
-    self.trendLabel.text = trend.trendName;
+    self.trendLabel.text = trend.name;
     
     self.agreeLabel.text = [NSString stringWithFormat:@"%d", self.trend.likes];
     self.agreeLabel.tintColor = [UIColor whiteColor];

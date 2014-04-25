@@ -8,11 +8,12 @@
 
 #import "NewTrendViewController.h"
 #import <Parse/Parse.h>
-#import "GAIDictionaryBuilder.h"
-#import "GAIFields.h"
 
 @interface NewTrendViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *trendTextField;
+@property (nonatomic) NSArray *categories;
+
+@property (nonatomic) NSString *trendName, *trendCategory;
 
 @end
 
@@ -32,7 +33,15 @@
     [super viewDidLoad];
     self.trendTextField.delegate = self;
     self.numberOfCharactersRemaining.text = [NSString stringWithFormat:@"0/100"];
+    self.categoryPicker.dataSource = self;
+    self.categoryPicker.delegate = self;
     
+    self.submissionButton.backgroundColor = [UIColor mavenRedColor];
+    self.submissionButton.tintColor = [UIColor whiteColor];
+
+    [self.trendTextField becomeFirstResponder];
+    
+    self.categories = [NSArray arrayWithObjects:@"One", @"Two", @"Three", nil];
     // Do any additional setup after loading the view.
 }
 
@@ -59,37 +68,10 @@
 }
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
-    
-    PFObject *newTrend = [PFObject objectWithClassName:@"Trends"];
-    newTrend[@"trend"] = textField.text;
-    newTrend[@"numberOfLikes"] = @1;
-    newTrend[@"numberOfDislikes"] = @0;
-    newTrend[@"creator"] = [PFUser currentUser];
-    [newTrend saveInBackground];
-    
-    NSLog(@"%@", newTrend.objectId);
-    
-    PFObject *response = [PFObject objectWithClassName:@"Activity"];
-    response[@"response"] = @"Confirm";
-    response[@"trendName"] = textField.text;
-    response[@"fromUser"] = [PFUser currentUser];
-    response[@"toUser"] = [PFUser currentUser];
-//    response[@"trend"] = newTrend.objectId;
-//
-//    PFRelation *relation = [response relationforKey:@"trend2"];
-//    [relation addObject:newTrend];
-    [response saveInBackground];
-
     NSLog(@"%@", textField.text);
     
-    textField.text = @"";
+    self.trendName = textField.text;
     
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    
-    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"     // Event category (required)
-                                                          action:@"button_press"  // Event action (required)
-                                                           label:@"new_trend"     // Event label
-                                                           value:nil] build]];    // Event value
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
@@ -110,5 +92,59 @@
     // Pass the selected object to the new view controller.
 }
 */
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    
+    return 1;
+}
 
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return self.categories.count;
+}
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return self.categories[row];
+}
+
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    NSLog(@"Picked: %@", self.categories[row]);
+    self.trendCategory = self.categories[row];
+}
+
+- (IBAction)trendSubmission:(id)sender {
+    
+    PFObject *newTrend = [PFObject objectWithClassName:@"Trends"];
+    newTrend[@"trend"] = self.trendName;
+    newTrend[@"category"] = self.trendCategory;
+    newTrend[@"numberOfLikes"] = @1;
+    newTrend[@"numberOfDislikes"] = @0;
+    newTrend[@"creator"] = [PFUser currentUser];
+    [newTrend saveInBackground];
+    
+    NSLog(@"%@", newTrend.objectId);
+    
+    PFObject *response = [PFObject objectWithClassName:@"Activity"];
+    response[@"response"] = @"Confirm";
+    response[@"trendName"] = self.trendName;
+    response[@"trendCategory"] = self.trendCategory;
+    response[@"fromUser"] = [PFUser currentUser];
+    response[@"toUser"] = [PFUser currentUser];
+    //    response[@"trend"] = newTrend.objectId;
+    //
+    //    PFRelation *relation = [response relationforKey:@"trend2"];
+    //    [relation addObject:newTrend];
+    [response saveInBackground];
+    
+    self.trendTextField.text = @"";
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"     // Event category (required)
+                                                          action:@"button_press"  // Event action (required)
+                                                           label:@"new_trend"     // Event label
+                                                           value:nil] build]];    // Event value
+}
 @end

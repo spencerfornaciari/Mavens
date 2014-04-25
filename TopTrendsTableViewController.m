@@ -57,7 +57,7 @@
                 
                 for (PFObject *object in objects) {
                     Trend *trend = [Trend new];
-                    trend.trendName = [object objectForKey:@"trend"];
+                    trend.name = [object objectForKey:@"trend"];
                     trend.likes = [[object objectForKey:@"numberOfLikes"] integerValue];
                     trend.dislikes = [[object objectForKey:@"numberOfDislikes"] integerValue];
                     
@@ -221,8 +221,8 @@
     // Get the new view controller using [segue destinationViewController].
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     EvaluationViewController *viewController = [segue destinationViewController];
-    viewController.title = [self.topTrendsArray[indexPath.row] trendName];
+    viewController.title = [self.topTrendsArray[indexPath.row] name];
     viewController.currentObject = self.topTrendsArray[indexPath.row];
-    NSLog(@"%@", [self.topTrendsArray[indexPath.row] trendName]);
+    NSLog(@"%@", [self.topTrendsArray[indexPath.row] name]);
 }
 @end
