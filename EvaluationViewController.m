@@ -37,9 +37,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.goodCallButton.backgroundColor = [UIColor greenColor];
+    self.goodCallButton.backgroundColor = [UIColor mavenGreenColor];
     self.goodCallButton.tintColor  = [UIColor whiteColor];
-    self.poorChoiceButton.backgroundColor = [UIColor redColor];
+    self.poorChoiceButton.backgroundColor = [UIColor mavenRedColor];
     self.poorChoiceButton.tintColor  = [UIColor whiteColor];
     
     _canLike = TRUE;

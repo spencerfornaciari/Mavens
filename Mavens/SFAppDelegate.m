@@ -7,7 +7,7 @@
 //
 
 #import "SFAppDelegate.h"
-#import "GAI.h"
+#import "EvaluationViewController.h"
 
 @implementation SFAppDelegate
 
@@ -64,6 +64,40 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    // handler code here
+    NSString *string = [NSString stringWithFormat:@"%@", url];
+    
+    NSArray *array = [string componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"/"]];
+    
+    string = [array lastObject];
+    NSLog(@"Here is the object id: %@", [array lastObject]);
+    
+//    for (int i = 0; i < array.count; i++) {
+//        NSLog(@"i: %@", array[i]);
+//    }
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Trends"];
+    [query getObjectInBackgroundWithId:string block:^(PFObject *trend, NSError *error) {
+        // Do something with the returned PFObject in the gameScore variable.
+        NSLog(@"Trend: %@", trend);
+    }];
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main_iPhone"
+                                                             bundle: nil];
+    
+    EvaluationViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"evaluation"];
+    
+    self.window.rootViewController = viewController;
+    
+//    EvaluationViewController *viewController = [[UIStoryboard storyboardWithName:@"Main_iPhone"
+//                                                                          bundle:nil] instantiateViewControllerWithIdentifier:@"evaluation"];
+//    [viewController presentViewController:viewController animated:YES completion:nil];
+    
+    return TRUE;
 }
 
 #pragma mark - Facebook Login

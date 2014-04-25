@@ -66,6 +66,13 @@
     [textField resignFirstResponder];
     return YES;
 }
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    [self.categoryPicker resignFirstResponder];
+    return YES;
+}
+
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
     NSLog(@"%@", textField.text);
@@ -110,6 +117,7 @@
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
+    [self.trendTextField resignFirstResponder];
     NSLog(@"Picked: %@", self.categories[row]);
     self.trendCategory = self.categories[row];
 }
@@ -139,6 +147,7 @@
     [response saveInBackground];
     
     self.trendTextField.text = @"";
+    self.numberOfCharactersRemaining.text = [NSString stringWithFormat:@"0/100"];
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     
